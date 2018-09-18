@@ -1,4 +1,4 @@
-# It's time to move out! - Getting your data out of the US
+# Use less Javascript - ask me how!
 
 These are the speaker notes / outline for the presentation. The deck was created with [Reveal.js](http://lab.hakim.se/reveal-js) and can be found in the [`/deck`](deck) folder.
 
@@ -6,142 +6,80 @@ These are the speaker notes / outline for the presentation. The deck was created
 
 * Fabio Neves
 * Brazilian by accident, Canadian by choice
-* Infant nerd, professional developer since 1997
+* Professional developer since 1997
 * Instructor at Lighthouse Labs and freelance developer
-* Not exactly a tinfoil hat guy
 
-## Why?
+## Why am I doing this talk?
 
-* First of all: the cloud is nothing more than someone else's computer
-  * Yes, this includes everything Google, Facebook, Instagram, Microsoft...
-* The location of those computers matter
-* Who controls those computers matters even more
-* Most of the cloud is hosted in the US
-* The US government gave themselves (unilaterally!) the right to spy on everyone else!
-* Have you read the news lately?
+The alternative title is "Fabio says things that should be obvious but aren't anymore"
 
-## What you can do?
+The web fine, then we broke it.
 
-* You don't need to abandon the cloud entirely, but you can keep your stuff in a safer place!
-* Should you trust a single entity with your data? Google stores all your email, contacts, calendar, location history...
-* Using your data - even if slightly anonymized - is their business.
-* How much can they guess about you just by looking at metadata?
-* You should diversify your data storage.
+### In the olden days...
 
-## Email
+1. Click links
+2. URL changes
+3. Back goes back
 
-* Gmail isn't the only game in town
-* It's relatively safe and has good encryption when passing messages around...
-* ...but it's a huge target for NSA and hackers in general.
-* The same is valid for all large email providers.
+### Today
 
-### Alternatives
+Modern frameworks practically rewrite most of the browser functionality in Javascript:
 
-* [Protonmail](https://protonmail.ch)
-  * End-to-end encrypted email. They don't have a way to read messages stored in their servers!
-  * Hosted in Switzerland
-  * Good free tier
-  * Downside: doesn't offer IMAP or POP3 access.
-* Manual PGP encryption
-  * Requires a lot of work
-  * [Keybase.io](https://keybase.io) makes it a bit less hard (still not easy)
+* It's a single page application!
+* Wait, The back button doesn't work!
+* No problem, let's add `#anchors` to our URLs and push them to `history`!
+* That's janky AF, let's intercept and take over the URL bar! This way we can write our own router with a bunch of URLs that never make a request!
+* All is fine and dandy now but WAIT! Google can't find our content!
+* No problem, let's use Node to render our client-side components on the server!
+* But what about our client-side routes?
+* LET'S RUN OUR CLIENT-SIDE ROUTER ON THE SERVER
 
-## Storage
+Facepalm.
 
-* Dropbox isn't very safe
-  * Condoleezza Rice is on their board of directors
-  * Yes, that lady from the Bush administration
-  * Nothing is encrypted
-  * There has been leaks
-* Google Drive is a bit better, but all restrictions mentioned before apply
+Also: have you heard of Chrome's upcoming [`noscript` intervention](https://timkadlec.com/remembers/2018-09-06-chromes-noscript-intervention/)?
 
-### Alternatives
+## To be clear...
 
-* [Sync.com](https://sync.com)
-  * End-to-end encrypted
-  * Canadian!
-  * Very good pricing
-  * Downsides: doesn't have document editing features like Dropbox and Google Docs
-  * Doesn't have a native Linux client (there are workarounds though)
-* [Owncloud](https://owncloud.org)
-  * Use one of many providers located in several places around the world
-  * [You can install it on a RaspberryPi](https://pimylifeup.com/raspberry-pi-owncloud/) and have the most personal cloud computing platform ever!
+I'm not talking about apps! The problem is everyone is hellbent in solving everything with an app - including content distribution.
 
-## Social media
+Modern Javascript frameworks are NOT good at that. But you know what's good?
 
-* That's a tough one!
-* You're pretty much paying for the services with your data and privacy
-  * Speaking of privacy, internet veterans have a much better understanding of it.
-  * People born in the 90s who grew with internet everywhere, not so much.
-  * you should consider absolutely everything you post public - even if marked otherwise.
-* BUT! There have been some interesting recent developments...
+Old fashioned request-response!
 
-### [Mastodon](https://mastodon.cloud)
+## But people want an app-like experience!
 
-* Decenralized, open-source, ad-free social network
-* It's gaining traction
-* Anyone can host a server
-* Servers talk to each other, so it's at one time more resilient, diverse and interesting than Twitter and Facebook put together
+No.
 
-## Slack
+People want to read your listicle, see some gifs and be able to share your content easily. That includes searching for it!
 
-* Slack is a step backwards
-  * Proprietary and closed re-implementation of IRC, which is open-source and distributed
-  * There are IRC clients based on IRC v3 that have pretty much the same features
-  * Yes, there are very good web interfaces
+## But Google uses chrome-headless to index websites! Javascript is a first-class citizen of the internet now!
 
-### Alternatives
+Google isn't a monopoly (yet). 
 
-* IRC!
-* [Riot.im](https://riot.im)
-  * Looks more like Slack
-  * Decentralized, modern architecture based on the [Matrix protocol](https://matrix.org)
-  * Yes, you can host your own
+Privacy-conscious people prefer alternatives like DuckDuckGo.
 
-## Code
+macOS shipped with DDG as default, but it's now... Bing!
 
-* Github and Bitbucket are not bad
-* Open-source projects are public anyway
-* Things might not be so clear-cut for private projects though
+## But I don't want my site to be boring!
 
-### Alternative
+CSS can take care of 99% of the excitement you need.
 
-* [Gitlab](https://about.gitlab.com)
-  * Host your own GitHub!
-  * Very easy to install and maintain
-  * Excellent for closed, company-specific projects
+The rest can be added with a bit of JS, but always using progressive enhancement (i.e., ideally it should also work without JS).
 
-## Hosting
+## This sounds oldschool. Do you want us to use jQuery?
 
-Here you need to make a decision:
+jQuery is not needed anymore.
 
-Is it enough for you and your users to have the data **situated** out of the US while **still under control** of a US company or do you want to **actually be completely out of US jurisdiction**?
+Use plain vanilla JS when necessary.
 
-The first case is easier. Amazon, DigitalOcean, Linode and others have datacenters in several different locations.
+If you need to create components, try lightweight solutions like StimulusJS or VueJS.
 
-The second case is ok if you can do your own operations, but there's currently no substitute for automated cloud hosting services like Heroku, Cloud9 or Google App Engine.
+https://stimulusjs.org/
+https://vuejs.org/v2/guide/#Getting-Started
 
-### Alternatives
+Vue was built to play nice with existing request-response websites. 
 
-* [1984hosting](https://1984hosting.com)
-  * Based in Iceland
-  * Famous for their stance on privacy and civil rights
-* [OVH](https://www.ovh.com/ca/en/)
-  * French company
-  * Offers decently-priced VPS
-  * Has datacenters all over the world (including Canada)
-* No Heroku alternative, but you can create your own using [Dokku](http://dokku.viewdocs.io/dokku/) or [Flynn](https://flynn.io).
-  * It's more work, but it'll end up cheaper and safer.
+It's **much** lighter than React and works very well without a compilation step, so it can be included only where necessary.
 
-## Notice a common theme?
+React, on the other hand, really wants to be the only thing controlling the DOM, which makes it the worst option to progressively enhance content outlets. 
 
-* Decentralization!
-* The internet was invented to be decentralized
-* It **was** very decentralized in the beginning
-* Facebook, Amazon and Google changed that
-* Make no mistake **this is NOT a good thing!**
-* You **can** and **should** take back control of the web!
-
-## Additional resources
-
-* Roll your own VPN on OVH, DigitalOcean or whatever: https://github.com/Nyr/openvpn-install
