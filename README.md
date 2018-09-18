@@ -9,11 +9,9 @@ These are the speaker notes / outline for the presentation. The deck was created
 * Professional developer since 1997
 * Instructor at Lighthouse Labs and freelance developer
 
-## Why am I doing this talk?
+## Why?
 
-The alternative title is "Fabio says things that should be obvious but aren't anymore"
-
-The web fine, then we broke it.
+The web was fine, then we broke it.
 
 ### In the olden days...
 
